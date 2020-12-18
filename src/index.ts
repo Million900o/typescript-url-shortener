@@ -3,14 +3,14 @@ import { DB } from "jason.db";
 import { Logger } from "loggers";
 import config from "./config.json";
 
-let Database: DB = new DB('data.jason', { renameFile: false, writeFile: true });
+let Database = new DB('data.jason', { renameFile: false, writeFile: true });
 Database.collection('urls', { caching: true });
 Database.collection('data', { caching: true });
 Database.collection('data').set('users', Database.collection('data').get('users') || [
   { name: 'firstUser', token: 'hardCodedToken', date: new Date().toLocaleString() }
 ])
 
-let logger: Logger = new Logger({ debug: true, catch: true, colors: true, method: console.log, newLine: false });
+let logger = new Logger({ debug: true, catch: true, colors: true, method: console.log, newLine: false });
 
 type user = {
   name: string,
